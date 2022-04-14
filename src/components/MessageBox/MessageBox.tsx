@@ -32,12 +32,13 @@ const MessageBoxComponent: React.FC<MessageBoxProps> = ({
     <MessageContainer>
       <TitleContainer>
         <AvatarContainer
+          testID={'avatar-image'}
           source={avatarImage}
           onError={() => onImageLoadError()}
         />
-        <UsernameText>{username}:</UsernameText>
+        <UsernameText testID={'username'}>{username}:</UsernameText>
       </TitleContainer>
-      <MessageText>{message}</MessageText>
+      <MessageText testID={'message-text'}>{message}</MessageText>
     </MessageContainer>
   )
 }
