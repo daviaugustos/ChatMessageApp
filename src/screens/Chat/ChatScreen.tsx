@@ -1,8 +1,17 @@
 import React from 'react'
-import { Container } from '~/screens/Chat/ChatScreen.styles'
+import {
+  Container,
+  MessageContainer,
+  InputContainer,
+} from '~/screens/Chat/ChatScreen.styles'
 
 const ChatScreen = () => {
-  return <Container />
+  return (
+    <Container>
+      <MessageContainer />
+      <InputContainer />
+    </Container>
+  )
 }
 
 export default ChatScreen
