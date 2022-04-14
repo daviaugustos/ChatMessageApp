@@ -2,7 +2,7 @@ import styled from 'styled-components/native'
 
 export const MessageContainer = styled.View`
   padding: 5px;
-  background-color: white;
+  background-color: #f4f4f4;
   border-radius: 10px;
   margin-vertical: 5px;
 `
