@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState, useCallback } from 'react'
 import {
   Container,
   MessageContainer,
@@ -6,6 +6,7 @@ import {
 } from '~/screens/Chat/ChatScreen.styles'
 import MessageBox from '~/components/MessageBox/MessageBox'
 import { IMessage } from '~/@types/entities/MessageEntity'
+import { getMessages } from '~/services/Message/MessageService'
 
 const mockData: IMessage[] = [
   {
@@ -19,10 +20,21 @@ const mockData: IMessage[] = [
 ]
 
 const ChatScreen = () => {
+  const [messages, setMessages] = useState([])
+
+  useEffect(() => {
+    loadData()
+  }, [])
+
+  const loadData = useCallback(async () => {
+    const messagesLoaded = await getMessages()
+    setMessages(messagesLoaded)
+  }, [])
+
   return (
     <Container>
       <MessageContainer>
-        {mockData.map(({ id, username, avatar, body }) => (
+        {messages.map(({ id, username, avatar, body }) => (
           <MessageBox
             key={id}
             username={username}

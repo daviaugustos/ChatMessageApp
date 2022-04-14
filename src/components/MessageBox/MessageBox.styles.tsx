@@ -4,6 +4,7 @@ export const MessageContainer = styled.View`
   padding: 5px;
   background-color: white;
   border-radius: 10px;
+  margin-vertical: 5px;
 `
 
 export const AvatarContainer = styled.Image`
