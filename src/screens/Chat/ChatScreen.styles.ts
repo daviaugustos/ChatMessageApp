@@ -6,8 +6,10 @@ export const Container = styled(SafeAreaView)`
   background-color: green;
 `
 
-export const MessageContainer = styled.View`
+export const MessageContainer = styled.ScrollView`
   flex: 9;
+  padding-vertical: 30px;
+  padding-horizontal: 10px;
   background-color: blue;
 `
 
