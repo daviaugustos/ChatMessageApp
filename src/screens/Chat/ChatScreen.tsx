@@ -33,16 +33,19 @@ const ChatScreen = () => {
 
   return (
     <Container>
-      <MessageContainer>
-        {messages.map(({ id, username, avatar, body }) => (
+      <MessageContainer
+        inverted={true}
+        data={messages}
+        renderItem={({ item }) => (
           <MessageBox
-            key={id}
-            username={username}
-            avatarUrl={avatar}
-            message={body}
+            key={item.id}
+            username={item.username}
+            avatarUrl={item.avatar}
+            message={item.body}
           />
-        ))}
-      </MessageContainer>
+        )}
+        contentContainerStyle={{ paddingBottom: 40 }}
+      />
       <InputContainer />
     </Container>
   )
