@@ -1,6 +1,11 @@
 # ChatMessageApp
 
-A simple chat message app coded with React Native, Typescript, Styled Components and Axios. 
+A simple chat message app coded with React Native, Typescript, Styled Components and Axios.
+Features implemented:
+- List paginated messages from backend;
+- Infinite scroll;
+- Send message behavior on frontend;
+- Render images messages.
 
 <img width="944" alt="image" src="https://user-images.githubusercontent.com/20953743/163494077-0a60c3b5-0b03-4557-b1cb-a65b5b19e79a.png">
 
