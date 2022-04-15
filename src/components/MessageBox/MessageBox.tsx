@@ -14,7 +14,7 @@ interface MessageBoxProps {
   username: string
   avatarUrl: string
   message: string
-  image: string
+  image?: string
 }
 
 const MessageBoxComponent: React.FC<MessageBoxProps> = ({
@@ -43,7 +43,7 @@ const MessageBoxComponent: React.FC<MessageBoxProps> = ({
         <UsernameText testID={'username'}>{username}:</UsernameText>
       </TitleContainer>
       {message && <MessageText testID={'message-text'}>{message}</MessageText>}
-      {image != '' && (
+      {image !== '' && (
         <ImageContainer>
           <ImageData
             source={{
