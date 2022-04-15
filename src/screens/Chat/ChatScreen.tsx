@@ -15,13 +15,16 @@ import { getMessages } from '~/services/Message/MessageService'
 const ChatScreen = () => {
   const [messages, setMessages] = useState([])
   const [messageText, setMessageText] = useState('')
+  const [currentPage, setCurrentPage] = useState(1)
 
   useEffect(() => {
     loadData()
   }, [])
 
   const loadData = useCallback(async () => {
-    const messagesLoaded = await getMessages()
+    const messagesLoaded = await getMessages(currentPage)
+
+    setCurrentPage(1)
     setMessages(messagesLoaded)
   }, [])
 
@@ -33,12 +36,26 @@ const ChatScreen = () => {
       user: 'd3c9eaf2-3b30-4508-8c3f-c33fdef65e0c',
       username: 'You',
       id: Math.random().toString(),
+      image: 'https://cdn-icons-png.flaticon.com/512/147/147144.png',
     }
     const updatedMessages = [newMessage, ...messages]
 
     setMessages(updatedMessages)
     setMessageText('')
   }, [messages, messageText])
+
+  const updateWithNewPaginatedItems = useCallback(async () => {
+    const messagesLoaded = await getMessages(currentPage)
+    setMessages([...messages, ...messagesLoaded])
+  }, [currentPage])
+
+  const onEnd = useCallback(() => {
+    setCurrentPage(currentPage + 1)
+  }, [currentPage])
+
+  useEffect(() => {
+    updateWithNewPaginatedItems()
+  }, [currentPage, updateWithNewPaginatedItems])
 
   return (
     <Container>
@@ -47,12 +64,14 @@ const ChatScreen = () => {
         data={messages}
         renderItem={({ item, index }) => (
           <MessageBox
+            image={item?.image || ''}
             key={`${item.user}+${index}`}
             username={item.username}
             avatarUrl={item.avatar}
             message={item.body}
           />
         )}
+        onEndReached={() => onEnd()}
       />
       <InputContainer>
         <InputFieldContainer>

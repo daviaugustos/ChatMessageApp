@@ -30,3 +30,14 @@ export const MessageText = styled.Text`
   margin-left: 10px;
   font-size: 14px;
 `
+
+export const ImageContainer = styled.View`
+  justify-content: center;
+  align-items: center;
+`
+
+export const ImageData = styled.Image`
+  height: 50px;
+  width: 50px;
+  margin: 10px;
+`

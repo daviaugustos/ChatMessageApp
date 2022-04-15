@@ -5,4 +5,5 @@ export interface IMessage {
   user: string
   username: string
   id: string
+  image?: string
 }
